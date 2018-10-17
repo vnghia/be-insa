@@ -56,7 +56,6 @@ class Display():
         the layout. If multiple objects have to be placed at the same time, do the refresh
         only at the end of the list.
         '''
-        self.viewer.gui.applyConfiguration(objName,
-                                           XYZQUATToViewerConfiguration(se3ToXYZQUAT(M)) )
+        self.viewer.gui.applyConfiguration(objName, se3ToXYZQUAT(M))
         if refresh: self.viewer.gui.refresh()
 
