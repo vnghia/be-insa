@@ -6,7 +6,7 @@ from numpy.linalg import norm
 path = '/home/student/models/romeo/'
 urdf = path + 'urdf/romeo.urdf'
 pkgs = [ path, ]
-robot = RomeoWrapper(urdf,pkgs,se3.JointModelFreeFlyer()) # Load urdf model
+robot = RomeoWrapper(urdf,pkgs)   # Load urdf model
                                   # The robot is loaded with the basis fixed to the world
 robot.initDisplay(loadModel=True) # setup the viewer to display the robot
 
