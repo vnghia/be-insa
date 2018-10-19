@@ -1,0 +1,2 @@
+sudo apt-get install cmake cmake-curses-gui cmake-qt-gui curl doxygen g++ ipython libassimp-dev assimp-utils libboost-dev omniidl-python omniorb omniorb-idl omniorb-nameserver python python-matplotlib python-numpy python-scipy python2.7 qgit libbz2-dev zlib1g-dev libssl-dev pax tar libeigen3-dev libtinyxml-dev liburdfdom-dev libboost-all-dev libpcre3-dev libopenscenegraph-dev libqt4-dev python-qt4-dev libomniorb4-dev libqt4-opengl-dev python-omniorb python-scipy
+
