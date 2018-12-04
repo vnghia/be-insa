@@ -73,21 +73,21 @@ class Robot:
         self.viewer.viewer.gui.addSphere('world/'+prefix+'sphere3', 0.3,colorred)
         self.visuals.append( Visual('world/'+prefix+'sphere3',3,se3.SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/'+prefix+'upperarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/'+prefix+'upperarm',jointId,se3.SE3(eye(3),np.matrix([0.,0.,.5]))))
+        self.visuals.append( Visual('world/'+prefix+'upperarm',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
         
         name               = prefix+"elbow"
         jointName,bodyName = [name+"_joint",name+"_body"]
-        jointPlacement     = se3.SE3(eye(3),np.matrix( [0,0,1.0] ))
+        jointPlacement     = se3.SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
         jointId = self.model.addJoint(jointId,se3.JointModelRX(),jointPlacement,jointName)
         self.model.appendBodyToJoint(jointId,se3.Inertia.Random(),se3.SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/'+prefix+'sphere4', 0.3,colorred)
         self.visuals.append( Visual('world/'+prefix+'sphere4',jointId,se3.SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/'+prefix+'lowerarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/'+prefix+'lowerarm',jointId,se3.SE3(eye(3),np.matrix([0.,0.,.5]))))
+        self.visuals.append( Visual('world/'+prefix+'lowerarm',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
 
         name               = prefix+"wrist1"
         jointName,bodyName = [name+"_joint",name+"_body"]
-        jointPlacement     = se3.SE3(eye(3),np.matrix( [0,0,1.0] ))
+        jointPlacement     = se3.SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
         jointId = self.model.addJoint(jointId,se3.JointModelRX(),jointPlacement,jointName)
         self.model.appendBodyToJoint(jointId,se3.Inertia.Random(),se3.SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/'+prefix+'sphere5', 0.3,colorred)
@@ -109,7 +109,7 @@ class Robot:
         self.viewer.viewer.gui.addSphere('world/'+prefix+'sphere7', 0.3,colorred)
         self.visuals.append( Visual('world/'+prefix+'sphere7',jointId,se3.SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/'+prefix+'finger', .05,.05,.4,color)
-        self.visuals.append( Visual('world/'+prefix+'finger',jointId,se3.SE3(eye(3),np.matrix([0.,0.,.5]))))
+        self.visuals.append( Visual('world/'+prefix+'finger',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
 
 
     def display(self,q):
