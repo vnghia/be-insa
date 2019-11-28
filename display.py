@@ -2,7 +2,7 @@
 from pinocchio.utils import *
 from pinocchio.explog import exp,log
 from numpy.linalg import pinv,norm
-import pinocchio as se3
+from pinocchio import se3ToXYZQUATtuple
 import gepetto.corbaserver
 
 # Example of a class Display that connect to Gepetto-viewer and implement a
@@ -56,6 +56,6 @@ class Display():
         the layout. If multiple objects have to be placed at the same time, do the refresh
         only at the end of the list.
         '''
-        self.viewer.gui.applyConfiguration(objName, se3ToXYZQUAT(M))
+        self.viewer.gui.applyConfiguration(objName, se3ToXYZQUATtuple(M))
         if refresh: self.viewer.gui.refresh()
 

@@ -1,7 +1,7 @@
 from pinocchio.utils import *
 from pinocchio.explog import exp,log
 from numpy.linalg import pinv,norm
-import pinocchio as se3
+from pinocchio import forwardKinematics, Inertia, JointModelRX, Model, SE3
 import gepetto.corbaserver
 from display import Display
 
@@ -38,49 +38,49 @@ class Robot:
     def __init__(self):
         self.viewer = Display()
         self.visuals = []
-        self.model = se3.Model.BuildEmptyModel()
+        self.model = Model ()
         self.createArm3DOF()
         self.data = self.model.createData()
         self.q0 = zero(self.model.nq)
 
-    def createArm3DOF(self,rootId=0, prefix='', jointPlacement=se3.SE3.Identity()):
+    def createArm3DOF(self,rootId=0, prefix='', jointPlacement=SE3.Identity()):
         color   = [red,green,blue,transparency] = [1,1,0.78,1.0]
         colorred = [1.0,0.0,0.0,1.0]
 
         jointId = rootId
 
         jointName          = prefix + "shoulder_joint"
-        joint              = se3.JointModelRX()
+        joint              = JointModelRX()
         jointId = self.model.addJoint(jointId,joint,jointPlacement,jointName)
-        self.model.appendBodyToJoint(jointId,se3.Inertia.Random(),se3.SE3.Identity())
+        self.model.appendBodyToJoint(jointId,Inertia.Random(),SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'shoulder', 0.3,colorred)
-        self.visuals.append( Visual('world/' + prefix + 'shoulder',jointId,se3.SE3.Identity()) )
+        self.visuals.append( Visual('world/' + prefix + 'shoulder',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'upperarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/' + prefix + 'upperarm',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
+        self.visuals.append( Visual('world/' + prefix + 'upperarm',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
 
         jointName          = prefix + "elbow_joint"
-        jointPlacement     = se3.SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
-        joint              = se3.JointModelRX()
+        jointPlacement     = SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
+        joint              = JointModelRX()
         jointId = self.model.addJoint(jointId,joint,jointPlacement,jointName)
-        self.model.appendBodyToJoint(jointId,se3.Inertia.Random(),se3.SE3.Identity())
+        self.model.appendBodyToJoint(jointId,Inertia.Random(),SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'elbow', 0.3,colorred)
-        self.visuals.append( Visual('world/' + prefix + 'elbow',jointId,se3.SE3.Identity()) )
+        self.visuals.append( Visual('world/' + prefix + 'elbow',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'lowerarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/' + prefix + 'lowerarm',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
+        self.visuals.append( Visual('world/' + prefix + 'lowerarm',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
 
         jointName          = prefix + "wrist_joint"
-        jointPlacement     = se3.SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
-        joint              = se3.JointModelRX()
+        jointPlacement     = SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
+        joint              = JointModelRX()
         jointId = self.model.addJoint(jointId,joint,jointPlacement,jointName)
-        self.model.appendBodyToJoint(jointId,se3.Inertia.Random(),se3.SE3.Identity())
+        self.model.appendBodyToJoint(jointId,Inertia.Random(),SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'wrist', 0.3,colorred)
-        self.visuals.append( Visual('world/' + prefix + 'wrist',jointId,se3.SE3.Identity()) )
+        self.visuals.append( Visual('world/' + prefix + 'wrist',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'hand', .1,.1,.25,color)
-        self.visuals.append( Visual('world/' + prefix + 'hand',jointId,se3.SE3(eye(3),np.matrix([[0.],[0.],[.25]]))))
+        self.visuals.append( Visual('world/' + prefix + 'hand',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.25]]))))
 
 
     def display(self,q):
-        se3.forwardKinematics(self.model,self.data,q)
+        forwardKinematics(self.model,self.data,q)
         for visual in self.visuals:
             visual.place( self.viewer,self.data.oMi[visual.jointParent] )
         self.viewer.viewer.gui.refresh()
