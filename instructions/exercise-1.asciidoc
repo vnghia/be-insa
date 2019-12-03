@@ -70,6 +70,6 @@ freedom each. Each leg will be composed of the following joints
 * a rotation joint around x axis  (knee),
 
 * a rotation joint around y axis (ankle),
-* a rotation joint around z axis (ankle).
+* a rotation joint around x axis (ankle).
 
 Write your code in file +legged_robot.py+.
