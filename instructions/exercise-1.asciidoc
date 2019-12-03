@@ -14,6 +14,7 @@ same window.
 In the first terminal, type
 [source,sh]
 ----
+source config.sh
 gepetto-gui
 ----
 A window opens that we call the viewer.
@@ -21,6 +22,7 @@ A window opens that we call the viewer.
 In the second terminal, type
 [source,python]
 ----
+source config.sh
 python -i example_display.py
 ----
 
