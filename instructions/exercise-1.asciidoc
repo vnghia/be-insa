@@ -67,7 +67,7 @@ freedom each. Each leg will be composed of the following joints
 * a rotation joint around y axis (hip),
 * a rotation joint around x axis (hip),
 
-* a rotation joint around x axis  (knee),
+* a rotation joint around y axis  (knee),
 
 * a rotation joint around y axis (ankle),
 * a rotation joint around x axis (ankle).
