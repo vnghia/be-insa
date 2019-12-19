@@ -55,8 +55,8 @@ Look at the code in files
 * +robot_arm.py+,
 * +example_robot.py+
 
-Exercise 1
-----------
+Exercise 1.1
+------------
 
 image::biped-robot.png[width="15%",alt="biped robot"]
 
@@ -73,3 +73,14 @@ freedom each. Each leg will be composed of the following joints
 * a rotation joint around x axis (ankle).
 
 Write your code in file +legged_robot.py+.
+
+Exercise 1.2
+------------
+
+Append your kinematic chain to 3 prismatic joints
+
+* a prismatic joint along x,
+* a prismatic joint along y,
+* a prismatic joint along z.
+
+Use +JointModelPX+,+JointModelPY+,+JointModelPZ+ from module +pinocchio+.

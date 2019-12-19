@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.6.9" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
 <title>Building a kinematics chain</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -754,7 +755,7 @@ By typing CTRL+SHIFT+T in the terminal, you can open another terminal in the
 same window.</p></div>
 <div class="paragraph"><p>In the first terminal, type</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -763,7 +764,7 @@ gepetto-gui</tt></pre></div></div>
 <div class="paragraph"><p>A window opens that we call the viewer.</p></div>
 <div class="paragraph"><p>In the second terminal, type</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -790,14 +791,14 @@ python <span style="color: #990000">-</span>i example_display<span style="color:
 <div class="sectionbody">
 <div class="paragraph"><p>In the first terminal, type</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>gepetto-gui</tt></pre></div></div>
 <div class="paragraph"><p>In the second terminal, type</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -819,7 +820,7 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 </div>
 <div class="sect1">
-<h2 id="_exercise_1">Exercise 1</h2>
+<h2 id="_exercise_1_1">Exercise 1.1</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -846,7 +847,7 @@ a rotation joint around x axis (hip),
 </li>
 <li>
 <p>
-a rotation joint around x axis  (knee),
+a rotation joint around y axis  (knee),
 </p>
 </li>
 <li>
@@ -863,12 +864,36 @@ a rotation joint around x axis (ankle).
 <div class="paragraph"><p>Write your code in file <code>legged_robot.py</code>.</p></div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_exercise_1_2">Exercise 1.2</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Append your kinematic chain to 3 prismatic joints</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a prismatic joint along x,
+</p>
+</li>
+<li>
+<p>
+a prismatic joint along y,
+</p>
+</li>
+<li>
+<p>
+a prismatic joint along z.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Use <code>JointModelPX</code>,<code>JointModelPY</code>,<code>JointModelPZ</code> from module <code>pinocchio</code>.</p></div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2019-12-03 14:17:31 CET
+ 2019-12-19 11:53:54 CET
 </div>
 </div>
 </body>
