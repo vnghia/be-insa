@@ -1,6 +1,7 @@
 # Create a 7DOF manipulator robot and moves it along a constant (random) velocity during 10secs.
-from pinocchio.utils import *
+import numpy as np
 from numpy.linalg import pinv,norm
+from pinocchio import neutral
 from robot_arm import Robot
 import time
 
@@ -11,10 +12,17 @@ robot = Robot()
 robot.viewer.viewer.gui.setVisibility('world/floor','OFF')
 
 # Move the robot during 10secs at velocity v.
-v = rand(robot.model.nv)
-q = np.copy(robot.q0)
-dt = 5e-3
-for i in range(10000):
-    q += v*dt
-    robot.display(q)
-    time.sleep(dt)
+v = np.matrix ([robot.model.nv * [0]]).transpose ()
+dt = 1e-3
+for j in range (robot.model.nv):
+    v = np.matrix ([robot.model.nv * [0]]).transpose ()
+    v [j] = 1
+    q = neutral (robot.model)
+    for i in range(1000):
+        q += v*dt
+        robot.display(q)
+        time.sleep(dt)
+    for i in range(1000):
+        q -= v*dt
+        robot.display(q)
+        time.sleep(dt)
