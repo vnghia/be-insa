@@ -23,15 +23,15 @@ class Display():
         try:
             self.viewer=gepetto.corbaserver.Client()
         except:
-            print "Error while starting the viewer client. "
-            print "Check whether Gepetto-viewer is properly started"
+            print("Error while starting the viewer client. ")
+            print("Check whether Gepetto-viewer is properly started")
 
         # Open a window for displaying your model.
         try:
             # If the window already exists, do not do anything.
             windowID = self.viewer.gui.getWindowID (windowName)
-            print "Warning: window '"+windowName+"' already created."
-            print "The previously created objects will not be destroyed and do not have to be created again."
+            print("Warning: window '"+windowName+"' already created.")
+            print("The previously created objects will not be destroyed and do not have to be created again.")
         except:
             # Otherwise, create the empty window.
             windowID = self.viewer.gui.createWindow (windowName)
