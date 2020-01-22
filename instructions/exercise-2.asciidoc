@@ -35,7 +35,7 @@ with members
 
 with methods
 
-* +cost+ that takes a configuration vector as input and the return a real
+* +cost+ that takes as input a configuration vector and that returns a real
   valued cost,
 * +solve+ that takes as input an initial configuration and that returns
   a configuration minimizing the pose error.
