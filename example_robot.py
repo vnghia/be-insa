@@ -12,10 +12,9 @@ robot = Robot()
 robot.viewer.viewer.gui.setVisibility('world/floor','OFF')
 
 # Move the robot during 10secs at velocity v.
-v = np.matrix ([robot.model.nv * [0]]).transpose ()
 dt = 1e-3
 for j in range (robot.model.nv):
-    v = np.matrix ([robot.model.nv * [0]]).transpose ()
+    v = np.array (robot.model.nv * [0])
     v [j] = 1
     q = neutral (robot.model)
     for i in range(1000):
