@@ -4,6 +4,8 @@ from numpy.linalg import pinv,norm
 from pinocchio import forwardKinematics, Inertia, JointModelRX, Model, SE3
 import gepetto.corbaserver
 from display import Display
+import eigenpy
+eigenpy.switchToNumpyArray()
 
 class Visual:
     '''
@@ -56,27 +58,27 @@ class Robot:
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'shoulder', 0.3,colorred)
         self.visuals.append( Visual('world/' + prefix + 'shoulder',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'upperarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/' + prefix + 'upperarm',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
+        self.visuals.append( Visual('world/' + prefix + 'upperarm',jointId,SE3(eye(3),np.array([0., 0., .5]))))
 
         jointName          = prefix + "elbow_joint"
-        jointPlacement     = SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
+        jointPlacement     = SE3(eye(3),np.array( [0, 0, 1.0] ))
         joint              = JointModelRX()
         jointId = self.model.addJoint(jointId,joint,jointPlacement,jointName)
         self.model.appendBodyToJoint(jointId,Inertia.Random(),SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'elbow', 0.3,colorred)
         self.visuals.append( Visual('world/' + prefix + 'elbow',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'lowerarm', .1,.1,.5,color)
-        self.visuals.append( Visual('world/' + prefix + 'lowerarm',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.5]]))))
+        self.visuals.append( Visual('world/' + prefix + 'lowerarm',jointId,SE3(eye(3),np.array([0., 0., .5]))))
 
         jointName          = prefix + "wrist_joint"
-        jointPlacement     = SE3(eye(3),np.matrix( [[0],[0],[1.0]] ))
+        jointPlacement     = SE3(eye(3),np.array( [0, 0, 1.0] ))
         joint              = JointModelRX()
         jointId = self.model.addJoint(jointId,joint,jointPlacement,jointName)
         self.model.appendBodyToJoint(jointId,Inertia.Random(),SE3.Identity())
         self.viewer.viewer.gui.addSphere('world/' + prefix + 'wrist', 0.3,colorred)
         self.visuals.append( Visual('world/' + prefix + 'wrist',jointId,SE3.Identity()) )
         self.viewer.viewer.gui.addBox('world/' + prefix + 'hand', .1,.1,.25,color)
-        self.visuals.append( Visual('world/' + prefix + 'hand',jointId,SE3(eye(3),np.matrix([[0.],[0.],[.25]]))))
+        self.visuals.append( Visual('world/' + prefix + 'hand',jointId,SE3(eye(3),np.array([0., 0., .25]))))
 
 
     def display(self,q):
